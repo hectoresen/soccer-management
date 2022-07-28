@@ -1,0 +1,115 @@
+.access{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right top, #080809, #140e14, #201116, #2a1411, #2e1b06);
+    &__form{
+        width: 75%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        &__select{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            &-item{
+                margin: 5%;
+                width: 33%;
+                height: 75px;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px;
+                border-radius: 10px;
+                color: white;
+                font-size: 1.2rem;
+            }
+            &-item:hover{
+                background-color: #202124;
+                color: orange;
+                cursor: pointer;
+            }
+        }
+        &__login{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &-select{
+                margin-top: 5%;
+                width: 50%;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px;
+                color: white;
+                font-size: 1.2rem;
+                border-radius: 5px;
+
+            }
+            &-select:hover{
+                background-color: #202124;
+                color: orange;
+                cursor: pointer;
+            }
+            &__panel{
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                &-items{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+                    &-item{
+                        width: 45%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        margin: 0px 20px 0px 20px;
+                        padding: 5%;
+                        box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px;
+                        color: white;
+                        height: 75px;
+                        font-size: 1.2rem;
+                        border-radius: 5px;
+                    }
+                    &-item:hover{
+                        background-color: #202124;
+                        color: orange;
+                        cursor: pointer;
+                    }
+                }
+                &-back{
+                    margin-top: 5%;
+                    display: flex;
+                    justify-content: center;
+                    &-item{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 40%;
+                        box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px;
+                        color: white;
+                        height: 50px;
+                        font-size: 1.2rem;
+                        border-radius: 5px;
+                    }
+                    &-item:hover{
+                        background-color: #202124;
+                        color: orange;
+                        cursor: pointer;
+                    }
+                }
+                &-content{
+                    margin-top: 5%;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
