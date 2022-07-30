@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import {connect} from 'react-redux';
-import { teamLogin } from '../../redux/actions/auth.actions';
-import { useNavigate } from 'react-router-dom'
+import { coachLogin, playerLogin, teamLogin } from '../../redux/actions/auth.actions';
+import { useNavigate } from 'react-router-dom';
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import './LoginForm.scss';
-import { useEffect } from 'react';
 
 const INITIAL_VALUE = {
     email: "",
@@ -15,8 +15,8 @@ const INITIAL_VALUE = {
 
 
 const LoginForm = ({dispatch, team, player, coach, error, loginType}) => {
-
     const [loginData, setLoginData] = useState(INITIAL_VALUE);
+    const navigate = useNavigate();
 
     useEffect(() =>{
         if(team || player || coach){
@@ -24,14 +24,18 @@ const LoginForm = ({dispatch, team, player, coach, error, loginType}) => {
         }
     }, [team, player, coach])
 
-    const navigate = useNavigate();
 
     const submitForm = ev => {
         ev.preventDefault();
+
         if(loginType === 'team'){
             dispatch(teamLogin(loginData))
-            setLoginData(INITIAL_VALUE);
+        }else if(loginType === 'player'){
+            dispatch(playerLogin(loginData))
+        }else if(loginType === 'coach'){
+            dispatch(coachLogin(loginData));
         }
+        setLoginData(INITIAL_VALUE);
     };
 
     const handleInputValue = ev =>{

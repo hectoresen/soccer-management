@@ -1,8 +1,12 @@
 import React from 'react';
+import { useState } from 'react';
+import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { playerRegister } from '../../redux/actions/auth.actions';
+import { useNavigate } from 'react-router-dom';
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import './PlayerRegister.scss';
-import { useState } from 'react';
 
 const INITIAL_VALUE = {
     name: '',
@@ -10,12 +14,19 @@ const INITIAL_VALUE = {
     password: ''
 };
 
-const PlayerRegister = () => {
+const PlayerRegister = ({ dispatch, player, error }) => {
     const [playerData, setPlayerData] = useState(INITIAL_VALUE)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (player) {
+            navigate('/home')
+        }
+    }, [player])
 
     const submitForm = ev => {
         ev.preventDefault();
-        console.log("Total del formulario", playerData);
+        dispatch(playerRegister(playerData));
     };
 
     const handleInputValue = ev => {
@@ -23,55 +34,60 @@ const PlayerRegister = () => {
         setPlayerData({ ...playerData, [name]: value })
     };
 
-
     return (
         <div className='playerregister'>
             <h3>Registro de Jugadores</h3>
             <div className="playerregister__form">
                 <form onSubmit={submitForm}>
-                    <div className="teamregister__form-input">
+                    <div className="playerregister__form-input">
                         <span className="p-input-icon-right p-input-icon-right">
                             <i className="pi pi-user" />
                             <InputText
                                 name="name"
                                 type="text"
-                                placeholder="Nombre de entrenador"
+                                placeholder="Nombre de entrenador *"
                                 value={playerData.name}
                                 onChange={handleInputValue}
                             ></InputText>
                         </span>
                     </div>
-                    <div className="teamregister__form-input">
+                    <div className="playerregister__form-input">
                         <span className="p-input-icon-right p-input-icon-right">
                             <i className="pi pi-envelope" />
                             <InputText
                                 name="email"
                                 type="email"
-                                placeholder="Correo electrónico"
+                                placeholder="Correo electrónico *"
                                 value={playerData.email}
                                 onChange={handleInputValue}
                             ></InputText>
                         </span>
                     </div>
-                    <div className="teamregister__form-input">
+                    <div className="playerregister__form-input">
                         <span className="p-input-icon-right p-input-icon-right">
                             <i className="pi pi-lock" />
                             <InputText
                                 name="password"
                                 type="password"
-                                placeholder="Contraseña"
+                                placeholder="Contraseña *"
                                 value={playerData.password}
                                 onChange={handleInputValue}
                             ></InputText>
                         </span>
                     </div>
-                    <div className="teamregister__form-btn">
+                    <p className='playerregister__form-errors'>{error}</p>
+                    <div className="playerregister__form-btn">
                         <Button>Registrarme</Button>
                     </div>
                 </form>
             </div>
         </div>
     )
-}
+};
 
-export default PlayerRegister
+const mapStateProps = (state) => ({
+    player: state.auth.player,
+    error: state.auth.error
+});
+
+export default connect(mapStateProps)(PlayerRegister);

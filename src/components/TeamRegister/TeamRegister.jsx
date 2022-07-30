@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import {connect} from 'react-redux';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { teamRegister } from '../../redux/actions/auth.actions';
 import { InputText } from 'primereact/inputtext';
 import { InputNumber } from 'primereact/inputnumber';
@@ -14,12 +16,21 @@ const INITIAL_VALUE = {
   password: ''
 };
 
-const TeamRegister = ({dispatch, team, error}) => {
+const TeamRegister = ({ dispatch, team, error }) => {
+
   const [teamData, setTeamData] = useState(INITIAL_VALUE);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (team) {
+      navigate('/home')
+    }
+  }, [team])
 
   const submitForm = ev => {
     ev.preventDefault();
     dispatch(teamRegister(teamData))
+    setTeamData(INITIAL_VALUE)
   };
 
   const handleInputValue = ev => {
@@ -35,13 +46,13 @@ const TeamRegister = ({dispatch, team, error}) => {
           <div className='teamregister__form-input'>
             <span className="p-input-icon-right p-input-icon-right">
               <i className="pi pi-user" />
-              <InputText name='name' type="text" placeholder='Nombre del club' value={teamData.name} onChange={handleInputValue}></InputText>
+              <InputText name='name' type="text" placeholder='Nombre del club *' value={teamData.name} onChange={handleInputValue}></InputText>
             </span>
           </div>
           <div className='teamregister__form-input'>
             <span className="p-input-icon-right p-input-icon-right">
               <i className="pi pi-envelope" />
-              <InputText name='email' type="email" placeholder='Correo electrónico' value={teamData.email} onChange={handleInputValue}></InputText>
+              <InputText name='email' type="email" placeholder='Correo electrónico *' value={teamData.email} onChange={handleInputValue} required></InputText>
             </span>
           </div>
           <div className='teamregister__form-input'>
@@ -53,9 +64,10 @@ const TeamRegister = ({dispatch, team, error}) => {
           <div className='teamregister__form-input'>
             <span className="p-input-icon-right p-input-icon-right">
               <i className="pi pi-lock" />
-              <InputText name='password' type="password" placeholder='Contraseña' value={teamData.password} onChange={handleInputValue}></InputText>
+              <InputText name='password' type="password" placeholder='Contraseña *' value={teamData.password} onChange={handleInputValue}></InputText>
             </span>
           </div>
+          <p className='teamregister__form-errors'>{error}</p>
           <div className='teamregister__form-btn'>
             <Button>Registrar equipo</Button>
           </div>
@@ -65,7 +77,7 @@ const TeamRegister = ({dispatch, team, error}) => {
   )
 };
 
-const mapStateProps = (state) =>({
+const mapStateProps = (state) => ({
   team: state.auth.team,
   error: state.auth.error
 });

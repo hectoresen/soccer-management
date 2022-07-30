@@ -8,6 +8,7 @@ const teamSchema = new Schema(
         email: {type: String, required: true},
         budget: {type: Number, required: true},
         password: {type: String, required: true},
+        coach: [{type: mongoose.Types.ObjectId, ref: 'Coachs'}],
         players: [{type: mongoose.Types.ObjectId, ref: 'Players'}]
     },
     {timestamps: true}

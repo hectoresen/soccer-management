@@ -23,5 +23,9 @@
             display: flex;
             justify-content: center;
         }
+        &-errors{
+            margin-top: 1%;
+            color: red;
+        }
     }
 }

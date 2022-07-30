@@ -1,21 +1,21 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
-const Team = require('./models/Team');
+const Player = require('./models/Player');
 
 const validate = email => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 };
 
-passport.serializeUser((team, done) => {
-    return done(null, team._id);
+passport.serializeUser((player, done) => {
+    return done(null, player._id);
 });
 
-passport.deserializeUser(async (teamId, done) => {
+passport.deserializeUser(async (playerId, done) => {
     try {
-        const existingTeam = await Team.findById(teamId);
-        return done(null, existingTeam);
+        const existingPlayer = await Player.findById(playerId);
+        return done(null, existingPlayer);
     } catch (err) {
         return done(err);
     }
@@ -24,7 +24,7 @@ passport.deserializeUser(async (teamId, done) => {
 const saltRound = 10;
 
 passport.use(
-    'teamregister',
+    'playerregister',
     new LocalStrategy(
         {
             usernameField: 'email',
@@ -45,27 +45,26 @@ passport.use(
                     return done(error);
                 }
 
-                const previousTeam = await Team.findOne({
+                const previousPlayer = await Player.findOne({
                     email: email.toLowerCase(),
                 });
 
-                if (previousTeam) {
-                    const error = new Error("El usuario ya existe");
+                if (previousPlayer) {
+                    const error = new Error("El jugador ya existe");
                     return done(error);
                 }
 
                 const hash = await bcrypt.hash(password, saltRound);
 
-                const newTeam = new Team({
+                const newPlayer = new Player({
                     name: req.body.name,
                     email: email.toLowerCase(),
-                    budget: req.body.budget,
                     password: hash,
                 });
 
-                const savedTeam = await newTeam.save();
+                const savedPlayer = await newPlayer.save();
 
-                return done(null, savedTeam);
+                return done(null, savedPlayer);
             } catch (err) {
                 return done(err);
             }
@@ -73,8 +72,9 @@ passport.use(
     )
 );
 
+
 passport.use(
-    "teamlogin",
+    "playerlogin",
     new LocalStrategy(
         {
             usernameField: "email",
@@ -90,16 +90,16 @@ passport.use(
                     return done(error);
                 }
 
-                const currentTeam = await Team.findOne({ email: email.toLowerCase() });
+                const currentPlayer = await Player.findOne({ email: email.toLowerCase() });
 
-                if (!currentTeam) {
+                if (!currentPlayer) {
                     const error = new Error("El usuario no existe");
                     return done(error);
                 }
 
                 const isValidPassword = await bcrypt.compare(
                     password,
-                    currentTeam.password
+                    currentPlayer.password
                 );
 
                 if (!isValidPassword) {
@@ -108,7 +108,7 @@ passport.use(
                     return done(error);
                 }
 
-                return done(null, currentTeam);
+                return done(null, currentPlayer);
             } catch (err) {
                 return done(err);
             }

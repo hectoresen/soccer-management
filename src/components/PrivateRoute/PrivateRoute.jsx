@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useLocation, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const PrivateRoute = ({team, player, coach, component}) => {
-    const location = useLocation();
-    console.log(1);
+    const navigate = useNavigate();
 
     if(!component) throw new Error('Component not found');
 
     if(team || player || coach){
         return component;
-    };
+    }
+/*     if(!team || !player || !coach){
+        navigate('/unauthorized');
+    } */
 }
 
 const mapStateProps = state => ({

@@ -2,54 +2,54 @@ const passport = require('passport');
 
 module.exports = {
     checkSession: async (req, res, next) => {
-        if (req.team) {
-            let teamRegister = req.team;
-            teamRegister.password = null;
+        if (req.coach) {
+            let coachRegister = req.coach;
+            coachRegister.password = null;
 
-            return res.status(200).json(teamRegister);
+            return res.status(200).json(coachRegister);
         } else {
-            return res.status(401).json({ message: 'Team not found' });
+            return res.status(401).json({ message: 'Jugador no encontrado' });
         }
     },
 
-    teamRegister: (req, res, next) => {
+    coachRegister: (req, res, next) => {
         const { password, email } = req.body;
 
         if (!password || !email) {
             return res.status(400).json({ message: 'Completa todos los campos' });
         }
 
-        passport.authenticate("teamregister", (error, team) => {
+        passport.authenticate("coachregister", (error, coach) => {
             if (error) {
                 return res.status(403).json({ message: error.message });
             }
-            req.logIn(team, (error) => {
+            req.logIn(coach, (error) => {
                 if (error) {
                     return res.status(403).json({ message: error.message });
                 };
 
-                let teamRegister = team;
-                teamRegister.password = null;
+                let coachRegister = coach;
+                coachRegister.password = null;
 
-                return res.json(teamRegister);
+                return res.json(coachRegister);
             });
         })(req, res, next);
     },
 
-    teamLogin: (req, res, next) => {
-        passport.authenticate("teamlogin", (error, team) => {
+    coachLogin: (req, res, next) => {
+        passport.authenticate("coachlogin", (error, coach) => {
             if (error) {
                 return res.status(401).json({ message: error.message });
             }
-            req.logIn(team, (error) => {
+            req.logIn(coach, (error) => {
                 if (error) {
                     return res.status(403).json({ message: error.message });
                 };
 
-                let teamLogged = team;
-                teamLogged.password = null;
+                let coachLogged = coach;
+                coachLogged.password = null;
 
-                return res.json(teamLogged);
+                return res.json(coachLogged);
             });
         })(req, res, next);
     },

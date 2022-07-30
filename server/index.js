@@ -8,6 +8,8 @@ const MongoStore = require('connect-mongo')(session);
 
 /* ROUTES */
 const teamRouter = require('./routes/team.routes');
+const playerRouter = require('./routes/player.routes');
+const coachRouter = require('./routes/coach.routes');
 
 const dotenv = require('dotenv').config({ path: './.env' });
 
@@ -19,6 +21,8 @@ const { dbConnect } = require('./config/db');
 dbConnect();
 
 require('./team.passport');
+require('./player.passport');
+require('./coach.passport');
 
 
 server.use((req, res, next) => {
@@ -57,6 +61,8 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 server.use('/team', teamRouter);
+server.use('/player', playerRouter);
+server.use('/coach', coachRouter);
 
 
 server.use('*', (req, res, next) => {
