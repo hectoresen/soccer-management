@@ -1,17 +1,59 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { findAllPlayers } from '../../redux/actions/team.actions';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { Button } from 'primereact/button';
+import { InputText } from 'primereact/inputtext';
+import { TabView, TabPanel } from 'primereact/tabview';
 import './PlayersList.scss';
 
-const PlayersList = () => {
+const PlayersList = ({dispatch, playersList, filteredPlayers, error}) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() =>{
+        dispatch(findAllPlayers());
+    },[])
+
+    const header = (
+        <div className="playerslist__header">
+            <span className="p-input-icon-left">
+                <i className="pi pi-search" />
+                <InputText type="search" placeholder="Buscar jugadores..." />
+            </span>
+        </div>
+    );
+
+    const displayTeamPlayer = player =>{
+        if(player.team.length <1){
+            return <div>Sin equipo actualmente</div>
+        }else{
+            return player.team;
+        }
+    };
+
+    const btnActions = player =>{
+        return <div>
+            <Button icon="pi pi-plus" className='p-button-success playerslist__btn' iconPos='right' ></Button>
+        </div>
+    }
     return (
         <div className='playerslist'>
-            PlayersList
+            <DataTable value={playersList} header={header} responsiveLayout="scroll">
+                <Column field="name" header="Nombre" body={playersList.name}></Column>
+                <Column field="name" header="Equipo" body={displayTeamPlayer}></Column>
+                <Column field="actions" header="Dar de alta" body={btnActions}></Column>
+            </DataTable>
         </div>
     )
 };
 
-/* const mapStateProps = (state) =>({
+const mapStateProps = (state) =>({
+    playersList: state.team.playersList,
+    filteredPlayers: state.team.filteredPlayers,
+    error: state.team.error
+});
 
-}); */
-
-export default PlayersList;
+export default connect(mapStateProps)(PlayersList);
