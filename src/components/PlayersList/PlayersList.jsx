@@ -10,12 +10,24 @@ import { InputText } from 'primereact/inputtext';
 import './PlayersList.scss';
 
 const PlayersList = ({dispatch, playersList, filteredPlayers, team, error}) => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activePage, setActivePage] = useState(1);
+    const [enableNextPage, setEnableNextPage] = useState(false);
+    const [enablePreviousPage, setEnablePreviousPage] = useState(false);
+    const {players, totalPages} = playersList;
 
     useEffect(() =>{
-        console.log('Estás con el equipo->', team);
-        dispatch(findAllPlayers());
-    },[])
+        if(activePage === totalPages){
+            setEnableNextPage(true);
+            setEnablePreviousPage(false)
+        }else if(activePage === 1 ){
+            setEnablePreviousPage(true)
+            setEnableNextPage(false)
+        }else if(!activePage === 1 || activePage === totalPages){
+            setEnableNextPage(false)
+            setEnablePreviousPage(false)
+        };
+        dispatch(findAllPlayers(activePage));
+    },[activePage]);
 
     const header = (
         <div className="playerslist__header">
@@ -61,15 +73,37 @@ const PlayersList = ({dispatch, playersList, filteredPlayers, team, error}) => {
     };
 
     return (
-        <>
-        <div className='playerslist'>
-            <DataTable value={playersList} header={header} responsiveLayout="scroll">
-                <Column field="name" header="Nombre" body={playersList.name}></Column>
-                <Column field="name" header="Equipo" body={displayTeamPlayer}></Column>
-                <Column field="actions" header="Dar de alta" body={btnActions}></Column>
-            </DataTable>
+    <>
+    <div className='playerslist'>
+            {!playersList &&
+                <div>Cargando jugadores</div>
+            }
+            {playersList &&
+                <DataTable value={players} header={header} responsiveLayout="scroll">
+                    <Column field="name" header="Nombre" body={players.name}></Column>
+                    <Column field="name" header="Equipo" body={displayTeamPlayer}></Column>
+                    <Column field="actions" header="Dar de alta" body={btnActions}></Column>
+                    {error && <p>{error}</p>}
+                </DataTable>
+            }
+        <div className='playerslist__paginator'>
+            <div className='playerslist__paginator-text'>
+                Cambiar de página
+            </div>
+            <div className='playerslist__paginator-buttons'>
+                <Button icon="pi pi-arrow-left"
+                        onClick={() => setActivePage(activePage -1)
+                                }
+                        disabled={enablePreviousPage}
+                />
+                <Button icon="pi pi-arrow-right"
+                        onClick={() => setActivePage(activePage +1)}
+                        disabled={enableNextPage}
+                />
+            </div>
         </div>
-        </>
+    </div>
+    </>
     )
 };
 

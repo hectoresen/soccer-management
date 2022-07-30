@@ -7,11 +7,11 @@ export const ACTION_PLAYER_ADD_OK = "ACTION_PLAYER_ADD__OK";
 export const ACTION_PLAYER_ADD_ERROR = "ACTION_PLAYER_ADD_ERROR";
 
 
-export const findAllPlayers = () =>{
+export const findAllPlayers = (activePage) =>{
     return async(dispatch) =>{
         dispatch({type: ACTION_PLAYERS_LIST});
 
-        const findRequest = await fetch('http://localhost:4000/team/allplayers',{
+        const findRequest = await fetch(`http://localhost:4000/team/allplayers/${activePage}`,{
             method: 'GET',
             headers: {
                 Accept: "application/json",
@@ -33,7 +33,7 @@ export const findAllPlayers = () =>{
 export const addPlayer = (playerId, teamId) =>{
     const editInfo = {
         playerId: playerId,
-        teamId: teamId
+        teamId: teamId,
     };
 
     return async(dispatch) =>{
