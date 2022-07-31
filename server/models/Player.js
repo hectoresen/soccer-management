@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const Schema = mongoose.Schema;
 
@@ -12,6 +13,7 @@ const playerSchema = new Schema(
     },
     {timestamps: true}
 );
+playerSchema.plugin(mongoosePaginate);
 
 const Player = mongoose.model('Players', playerSchema);
 
