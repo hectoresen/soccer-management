@@ -24,6 +24,7 @@ router.get('/allplayers/:page', async(req, res, next) =>{
                     {
                     id: player._id,
                     name: player.name,
+                    salary: player.salary,
                     team: player.team.map(element => element.name)
                     }
                 ));
@@ -40,11 +41,19 @@ router.get('/allplayers/:page', async(req, res, next) =>{
 
 router.put('/addplayer', async(req, res, next) =>{
     try{
-        const {playerId, teamId} = req.body;
+        const {playerId, teamId, playerSalary} = req.body;
+
+        const activeTeam = await Team.findById(teamId).populate('players');
+        let teamBudget = activeTeam.budget;
+        const totalWages = activeTeam.players.map(player => player.salary).reduce((prev, act) =>prev + act, 0);
+
+        if(teamBudget < (totalWages + playerSalary)){
+            return res.status(403).json({message: 'Estás excediendo el presupuesto de tu equipo'})
+        };
         const updatedPlayer = await Player.findByIdAndUpdate(
             playerId,
-            {$push: {team: teamId}},
-            {new: true}
+            {$push: {team: teamId}, salary: playerSalary},
+            {new: true},
         );
         await Team.findByIdAndUpdate(
             teamId,
@@ -56,5 +65,14 @@ router.put('/addplayer', async(req, res, next) =>{
         return next(err);
     };
 });
+
+router.put('/addcoach', async(req, res, next) =>{
+    try{
+        console.log(req.body);
+
+    }catch(err){
+        return next(err);
+    };
+})
 
 module.exports = router;

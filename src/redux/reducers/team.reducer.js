@@ -16,7 +16,7 @@ export const teamReducer = (state = INITIAL_STATE, action) =>{
             return {...state, playersList: false, error: action.payload}
         }
         case (actions.ACTION_PLAYER_ADD_OK): {
-            return {...state, playersList: action.payload, error: false}
+            return {...state, error: false}
         }
         case (actions.ACTION_PLAYER_ADD_ERROR): {
             return {...state, error: action.payload}

@@ -6,6 +6,10 @@ export const ACTION_PLAYER_ADD = "ACTION_PLAYER_ADD";
 export const ACTION_PLAYER_ADD_OK = "ACTION_PLAYER_ADD__OK";
 export const ACTION_PLAYER_ADD_ERROR = "ACTION_PLAYER_ADD_ERROR";
 
+export const ACTION_COACH_ADD = "ACTION_COACH_ADD";
+export const ACTION_COACH_ADD_OK = "ACTION_COACH_ADD_OK";
+export const ACTION_COACH_ADD_ERROR = "ACTION_COACH_ADD_ERROR"
+
 
 export const findAllPlayers = (activePage) =>{
     return async(dispatch) =>{
@@ -30,12 +34,7 @@ export const findAllPlayers = (activePage) =>{
     };
 };
 
-export const addPlayer = (playerId, teamId) =>{
-    const editInfo = {
-        playerId: playerId,
-        teamId: teamId,
-    };
-
+export const addPlayer = (formInfo) =>{
     return async(dispatch) =>{
         dispatch({type: ACTION_PLAYER_ADD});
 
@@ -47,7 +46,7 @@ export const addPlayer = (playerId, teamId) =>{
                 "Access-Control-Allow-Origin": "*",
             },
             credentials: "include",
-            body: JSON.stringify(editInfo),
+            body: JSON.stringify(formInfo),
         });
         const result = await addPlayerRequest.json();
 
@@ -58,3 +57,10 @@ export const addPlayer = (playerId, teamId) =>{
         };
     };
 };
+
+export const addCoach = (formInfo) =>{
+    return async(dispatch) =>{
+        dispatch({type: ACTION_COACH_ADD});
+        console.log('FORM INFO COACH REDUX', formInfo);
+    }
+}
