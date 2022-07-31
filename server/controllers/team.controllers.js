@@ -30,7 +30,6 @@ module.exports = {
 
                 let teamRegister = team;
                 teamRegister.password = null;
-
                 return res.json(teamRegister);
             });
         })(req, res, next);
@@ -45,7 +44,6 @@ module.exports = {
                 if (error) {
                     return res.status(403).json({ message: error.message });
                 };
-
                 let teamLogged = team;
                 teamLogged.password = null;
 

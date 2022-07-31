@@ -4,6 +4,9 @@ import CoachRegister from "./CoachRegister/CoachRegister";
 import LoginForm from "./LoginForm/LoginForm";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PlayersList from "./PlayersList/PlayersList";
+import CoachList from "./CoachList/CoachList";
+import TeamTemplate from "./TeamTemplate/TeamTemplate";
+import UpdateBudget from "./UpdateBudget/UpdateBudget";
 
 export {
     TeamRegister,
@@ -11,5 +14,8 @@ export {
     CoachRegister,
     LoginForm,
     PrivateRoute,
-    PlayersList
+    PlayersList,
+    CoachList,
+    TeamTemplate,
+    UpdateBudget
 }

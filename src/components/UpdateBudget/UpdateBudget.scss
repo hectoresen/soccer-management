@@ -1,0 +1,40 @@
+.updatebudget{
+    width: 350px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    &__info{
+        text-align: center;
+        width: 85%;
+        span {
+            color: rgb(64, 230, 64);
+            font-weight: bold;
+        }
+    }
+    &__form{
+        margin-top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &-btn{
+            width: 100%;
+            margin-top: 5%;
+        }
+    }
+    &-warning{
+        text-align: center;
+        margin-top: 10%;
+        span {
+            color: #4FC1F1;
+            font-weight: bold;
+        }
+        &-error{
+            color: red;
+            font-weight: bold;
+        }
+    }
+}

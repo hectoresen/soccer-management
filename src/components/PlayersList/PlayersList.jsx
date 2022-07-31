@@ -1,13 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addPlayer, findAllPlayers } from '../../redux/actions/team.actions';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { addPlayer, filteringPlayers, findAllPlayers } from '../../redux/actions/team.actions';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { Modal, Input, Row, Checkbox, Text } from "@nextui-org/react";
+import { Modal, Input, Row, Text } from "@nextui-org/react";
 import './PlayersList.scss';
 
 const PlayersList = ({ dispatch, playersList, filteredPlayers, team, error }) => {
@@ -32,21 +32,28 @@ const PlayersList = ({ dispatch, playersList, filteredPlayers, team, error }) =>
         dispatch(findAllPlayers(activePage));
     }, [activePage]);
 
-    useEffect(() =>{
-        if(error){
-            setVisible(true);
-        }
-    },[error])
+    const refreshPostError = () =>{
+        setTimeout(() =>{
+            dispatch(findAllPlayers(activePage))
+        }, 4000)
+    };
 
     const closeHandler = () => setVisible(false);
 
+    const lookingForPlayers = ev =>{
+        dispatch(filteringPlayers(ev.target.value))
+    };
     const header = (
         <div className="playerslist__header">
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
-                <InputText type="search" placeholder="Buscar jugadores..." />
+                <InputText type="search" placeholder="Buscar jugadores..." onChange={lookingForPlayers}/>
             </span>
         </div>
+    );
+
+    const filteredPlayersHeader = (
+        <div><h3>Jugadores Filtrados</h3></div>
     );
 
     const displayTeamPlayer = player => {
@@ -58,19 +65,16 @@ const PlayersList = ({ dispatch, playersList, filteredPlayers, team, error }) =>
     };
 
     const handleUpdatedTeamData = playerId => {
-        console.log(1);
         setUpdatedPlayer({ playerId: playerId, teamId: team._id });
         setVisible(true)
-    }
+    };
 
     const addPlayerToTeam = () => {
         dispatch(addPlayer(updatedPlayer));
         closeHandler();
     };
 
-    const getSalary = player => {
-        return <div><p>{player.salary}</p></div>
-    };
+    const getSalary = player => <div><p>{player.salary} €</p></div>;
 
     const btnActions = player => {
         if (player.team.length) {
@@ -98,7 +102,23 @@ const PlayersList = ({ dispatch, playersList, filteredPlayers, team, error }) =>
         <>
             <div className='playerslist'>
                 {!playersList &&
-                    <div>Cargando jugadores</div>
+                    <div>
+                        <p>Cargando jugadores</p>
+                    </div>
+                }
+                {error &&
+                <div>
+                    <p className='budget-error'>{error}</p>
+                    {refreshPostError()}
+                </div>
+                }
+                {filteredPlayers &&
+                    <DataTable value={filteredPlayers} header={filteredPlayersHeader} responsiveLayout="scroll">
+                        <Column field="name" header="Nombre" body={players.name}></Column>
+                        <Column field="name" header="Equipo" body={displayTeamPlayer}></Column>
+                        <Column field="salary" header="Salario" body={getSalary}></Column>
+                        <Column field="actions" header="Dar de alta" body={btnActions}></Column>
+                    </DataTable>
                 }
                 {playersList &&
                     <DataTable value={players} header={header} responsiveLayout="scroll">
@@ -166,21 +186,6 @@ const PlayersList = ({ dispatch, playersList, filteredPlayers, team, error }) =>
                             </Button>
                         </Modal.Footer>
                     </Modal>
-                    }
-                    {error &&
-                        <Modal
-                            closeButton
-                            blur
-                            aria-labelledby="modal-title"
-                            open={visible}
-                            onClose={closeHandler}
-                        >
-                            <Modal.Header>
-                                <Text id="modal-title" size={18}>
-                                    <p className='budget-error'>{error}</p>
-                                </Text>
-                            </Modal.Header>
-                        </Modal>
                     }
                 </div>
             </div>

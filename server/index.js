@@ -72,12 +72,10 @@ server.use('*', (req, res, next) => {
 });
 
 server.use((err, req, res, next) => {
-    console.log(err);
     return res.status(err.status || 500).json(err);
 });
 
 
 server.listen(PORT, () => {
-    console.log(dotenv);
     console.log(`servidor arrancado en http://localhost:${PORT}`)
 })
