@@ -9,7 +9,15 @@
         justify-content: center;
     }
     &__content{
+        width: 100%;
+        align-items: center;
         display: flex;
         justify-content: center;
+        &__intro{
+            span {
+                color: orange;
+                font-weight: bold;
+            }
+        }
     }
 }

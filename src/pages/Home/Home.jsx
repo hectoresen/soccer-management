@@ -2,9 +2,8 @@ import React from 'react';
 import { TabMenu } from 'primereact/tabmenu';
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import { Button } from 'primereact/button';
+import { TeamTemplate, UpdateBudget, PlayersList } from '../../components';
 import './Home.scss';
-import PlayersList from '../../components/PlayersList/PlayersList';
 
 const Home = ({dispatch, team, player, coach}) => {
 
@@ -28,12 +27,22 @@ const Home = ({dispatch, team, player, coach}) => {
       <div className='home__content'>
         {activeIndex === 0 &&
           <div className='home__content__intro'>
-            <p>Entrada</p>
+            <p>Has iniciado sesión como <span>{team.name || player.name || coach.name}</span>, solo los equipos pueden gestionar salarios, presupuestos y plantillas</p>
           </div>
         }
         {activeIndex === 1 &&
           <div className='home__content__players'>
             <PlayersList />
+          </div>
+        }
+        {activeIndex === 2 &&
+          <div className='home__content__coachs'>
+            <TeamTemplate />
+          </div>
+        }
+        {activeIndex === 3 &&
+          <div className='home__content__budget'>
+            <UpdateBudget />
           </div>
         }
       </div>

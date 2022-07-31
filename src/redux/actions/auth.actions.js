@@ -59,7 +59,6 @@ export const teamRegister = form =>{
 
 export const teamLogin = form =>{
     return async(dispatch) =>{
-        console.log(form);
         dispatch({type: AUTH_TEAM_LOGIN});
 
         const loginRequest = await fetch('http://localhost:4000/team/login', {
