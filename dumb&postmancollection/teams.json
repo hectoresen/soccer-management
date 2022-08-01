@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "62e812f75eede9aeac8cd91c"
+  },
+  "name": "Real Madrid",
+  "email": "realmadrid@testmail.es",
+  "budget": 300,
+  "password": "$2b$10$QpdH5XM9ZY3/GBaOkWlgnupLCzmHT.HXOj1TDWuDW8PG97Dk9qUS.",
+  "coach": [],
+  "players": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376375430"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376375430"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e8131b5eede9aeac8cd920"
+  },
+  "name": "Betis",
+  "email": "betis@testmail.es",
+  "budget": 6000,
+  "password": "$2b$10$wdwV83tivFd.0oH0GrSi9Oc6smml0gXbIpsvfcrgR.91gCKCwcXoC",
+  "coach": [],
+  "players": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376411806"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376411806"
+    }
+  },
+  "__v": 0
+}]

@@ -1,0 +1,405 @@
+{
+	"info": {
+		"_postman_id": "0633d117-b2ac-4621-963b-1a4a6a7d9169",
+		"name": "Gestión de equipos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18510656"
+	},
+	"item": [
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "http://localhost:4000/team/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Betis",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "Betis@testmail.es",
+									"type": "text"
+								},
+								{
+									"key": "budget",
+									"value": "6000",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/team/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"team",
+								"register"
+							]
+						},
+						"description": "Registrar jugador"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/coach/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Marcelo Bielsa",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "Bielsa@info.es",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/coach/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"coach",
+								"register"
+							]
+						},
+						"description": "Registrar entrenador"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/player/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Marco Reus",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "Marco@info.es",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/player/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"player",
+								"register"
+							]
+						},
+						"description": "Registrar jugador"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "http://localhost:4000/team/allplayers/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/team/allplayers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"team",
+								"allplayers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/team/teamtemplate/62e812f75eede9aeac8cd91c",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/team/teamtemplate/62e812f75eede9aeac8cd91c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"team",
+								"teamtemplate",
+								"62e812f75eede9aeac8cd91c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/team/allcoachs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/team/allcoachs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"team",
+								"allcoachs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/team/filteringplayer/Ber",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "memberId",
+									"value": "62e8138d5eede9aeac8cd938",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/team/filteringplayer/Ber",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"team",
+								"filteringplayer",
+								"Ber"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "http://localhost:4000/team/updatebudget",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "teamId",
+									"value": "62e812f75eede9aeac8cd91c",
+									"type": "text"
+								},
+								{
+									"key": "newBudget",
+									"value": "5000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/team/updatebudget",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"team",
+								"updatebudget"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/team/unsubscribe",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "memberId",
+									"value": "62e8138d5eede9aeac8cd938",
+									"type": "text"
+								},
+								{
+									"key": "teamId",
+									"value": "62e812f75eede9aeac8cd91c",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/team/unsubscribe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"team",
+								"unsubscribe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/team/addcoach",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "coachId",
+									"value": "62e8146f5eede9aeac8cd964",
+									"type": "text"
+								},
+								{
+									"key": "teamId",
+									"value": "62e812f75eede9aeac8cd91c",
+									"type": "text"
+								},
+								{
+									"key": "coachSalary",
+									"value": "100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/team/addcoach",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"team",
+								"addcoach"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:4000/team/addplayer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "playerId",
+									"value": "62e813435eede9aeac8cd924",
+									"type": "text"
+								},
+								{
+									"key": "teamId",
+									"value": "62e812f75eede9aeac8cd91c",
+									"type": "text"
+								},
+								{
+									"key": "playerSalary",
+									"value": "700",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/team/addplayer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"team",
+								"addplayer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,141 @@
+[{
+  "_id": {
+    "$oid": "62e8146f5eede9aeac8cd964"
+  },
+  "name": "Pep Guardiola",
+  "email": "pep@info.es",
+  "password": "$2b$10$nPaU5WVACbSVJkoO20uxPeGsJ15SeKVE/y.K1qD1vka.LkueIzEfe",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376751184"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376751184"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e8147e5eede9aeac8cd968"
+  },
+  "name": "Mourinho",
+  "email": "mourinho@info.es",
+  "password": "$2b$10$Y5uy5.5Fb5oP7s3tTLRVh.uTx1QcEM4MlvQsK4uQ3Etjo6.gjjiMi",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376766330"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376766330"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e814875eede9aeac8cd96c"
+  },
+  "name": "Carlo Ancelotti",
+  "email": "carlo@info.es",
+  "password": "$2b$10$vlHo/S1kmsjPVWhzEdVgVek6vB43k6lbjbq2ekKbP4jZuWRUc1Mzy",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376775939"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376775939"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e814935eede9aeac8cd970"
+  },
+  "name": "Unai Emery",
+  "email": "unai@info.es",
+  "password": "$2b$10$jhyWgNFTrNMkUjttLidoP.AFLx.9I4B8UxBfzPj3r6ZV8xP.0INzS",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376787087"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376787087"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e814a55eede9aeac8cd974"
+  },
+  "name": "Antonio Conte",
+  "email": "conte@info.es",
+  "password": "$2b$10$btYsqU3vtgyS5t9WArwEW.Q2V.s5a.eROPwsUhbyFg5i9ma27QMyC",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376805270"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376805270"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e814b55eede9aeac8cd978"
+  },
+  "name": "Mauricio Pochettino",
+  "email": "pochettino@info.es",
+  "password": "$2b$10$aybihYFgWFRK/l9WYhKm4ui1doTj7uoMXUxA5auGomK1mwTRiRwU2",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376821264"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376821264"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e814c45eede9aeac8cd97c"
+  },
+  "name": "Marcelo Bielsa",
+  "email": "bielsa@info.es",
+  "password": "$2b$10$SJz4OJupmdWIc0qLiYp4qOFwGltDgEhU.UrLzZmhha3U92ffFIOgy",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376836417"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376836417"
+    }
+  },
+  "__v": 0
+}]
