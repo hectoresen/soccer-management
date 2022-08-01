@@ -30,7 +30,6 @@ module.exports = {
                 }
             });
 
-
             const mailOptions = {
                 from: req.user.email,
                 to: (foundPlayer) ? foundPlayer.email : foundCoach.email,
@@ -50,4 +49,4 @@ module.exports = {
             return next(err);
         };
     }
-}
+};
