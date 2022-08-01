@@ -1,6 +1,7 @@
 const express = require('express');
 const teamController = require('../controllers/team.controllers');
 const unsusbscribeController = require('../controllers/unsbuscribe.controller');
+const addMemberController = require('../controllers/addMember.controller');
 const Player = require('../models/Player');
 const Team = require('../models/Team');
 const Coach = require('../models/Coach');
@@ -11,6 +12,8 @@ router.post('/register', teamController.teamRegister);
 router.post('/login', teamController.teamLogin);
 router.get('/check-session', teamController.checkSession);
 router.put('/unsubscribe', unsusbscribeController.unsubscribe);
+router.put('/addplayer', addMemberController.addPlayer);
+router.put('/addcoach', addMemberController.addCoach);
 
 
 /* PAGINATION ALL PLAYERS */
@@ -43,48 +46,8 @@ router.get('/allplayers/:page', async(req, res, next) =>{
     }
 });
 
-/* ADD PLAYER TO TEAM */
-router.put('/addplayer', async(req, res, next) =>{
-    try{
-        const {playerId, teamId, playerSalary} = req.body;
-
-        const activeTeam = await Team.findById(teamId).populate('players').populate('coach');
-
-        let teamBudget = activeTeam.budget;
-        const playersWages = activeTeam.players.map(player => player.salary).reduce((prev, act) =>prev + act, 0);
-        const coachWages = activeTeam.coach.map(player => player.salary).reduce((prev, act) =>prev + act, 0);
-        const activePlayerSalary = Number(playerSalary);
-
-        const totalWages = playersWages + coachWages + activePlayerSalary;
-
-        if(teamBudget < totalWages){
-            return res.status(403).json({message: 'Estás excediendo el presupuesto de tu equipo'})
-        };
-
-        const existingPlayer = await Team.findOne({players: playerId});
-
-        if(existingPlayer){
-            return res.status(403).json({message: 'Este jugador ya tiene equipo'});
-        }
-
-        const updatedPlayer = await Player.findByIdAndUpdate(
-            playerId,
-            {$push: {team: teamId}, salary: playerSalary},
-            {new: true},
-        );
-        await Team.findByIdAndUpdate(
-            teamId,
-            {$push: {players: playerId}},
-            {new: true}
-        );
-        return res.status(200).json(updatedPlayer);
-    }catch(err){
-        return next(err);
-    };
-});
 
 /* GET TEAM TEMPLATE */
-
 router.get('/teamtemplate/:teamId', async(req, res, next) =>{
     try{
         const {teamId} = req.params;
@@ -112,48 +75,6 @@ router.get('/allcoachs', async(req, res, next) =>{
             team: coach.team.map(element => element.name)
         }));
         return res.status(200).json(coachList);
-
-    }catch(err){
-        return next(err);
-    };
-});
-
-/* ADD COACH TO TEAM */
-router.put('/addcoach', async(req, res, next) =>{
-    try{
-        const {coachId, teamId, coachSalary} = req.body;
-
-        const activeTeam = await Team.findById(teamId).populate('players').populate('coach');
-        let teamBudget = activeTeam.budget;
-        const playersWages = activeTeam.players.map(player => player.salary).reduce((prev, act) =>prev + act, 0);
-        const coachWages = activeTeam.coach.map(player => player.salary).reduce((prev, act) =>prev + act, 0);
-        const activeCoachSalary = Number(coachSalary);
-
-        const totalWages = playersWages + coachWages + activeCoachSalary;
-
-        if(teamBudget < totalWages){
-            console.error('Excediendo máximo presupuesto')
-            return res.status(403).json({message: 'Estás excediendo el presupuesto de tu equipo'})
-        };
-
-        const existingCoach = await Team.findOne({coach: coachId});
-
-        if(existingCoach){
-            return res.status(403).json({message: 'Este entrenador ya tiene equipo'});
-        };
-
-        const updatedCoach = await Coach.findByIdAndUpdate(
-            coachId,
-            {$push: {team: teamId}, salary: coachSalary},
-            {new: true},
-        );
-        await Team.findByIdAndUpdate(
-            teamId,
-            {$push: {coach: coachId}},
-            {new: true}
-        );
-
-        return res.status(200).json(updatedCoach);
 
     }catch(err){
         return next(err);
