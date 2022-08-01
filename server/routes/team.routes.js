@@ -1,5 +1,6 @@
 const express = require('express');
 const teamController = require('../controllers/team.controllers');
+const unsusbscribeController = require('../controllers/unsbuscribe.controller');
 const Player = require('../models/Player');
 const Team = require('../models/Team');
 const Coach = require('../models/Coach');
@@ -9,6 +10,7 @@ const router = express.Router();
 router.post('/register', teamController.teamRegister);
 router.post('/login', teamController.teamLogin);
 router.get('/check-session', teamController.checkSession);
+router.put('/unsubscribe', unsusbscribeController.unsubscribe);
 
 
 /* PAGINATION ALL PLAYERS */
@@ -84,10 +86,8 @@ router.put('/addplayer', async(req, res, next) =>{
 /* GET TEAM TEMPLATE */
 
 router.get('/teamtemplate/:teamId', async(req, res, next) =>{
-
     try{
         const {teamId} = req.params;
-
         const teamPlayers = await Team.findById(teamId).populate('players');
         const teamCoachs = await Team.findById(teamId).populate('coach');
 
@@ -95,9 +95,7 @@ router.get('/teamtemplate/:teamId', async(req, res, next) =>{
             players: teamPlayers.players.map(player => ({id: player._id, name: player.name, salary: player.salary})),
             coachs: teamCoachs.coach.map(coach => ({id: coach._id, name: coach.name, salary: coach.salary})) || []
         };
-
         return res.status(200).json(teamTemplate);
-
     }catch(err){
         return next(err);
     }
@@ -138,7 +136,7 @@ router.put('/addcoach', async(req, res, next) =>{
             return res.status(403).json({message: 'Estás excediendo el presupuesto de tu equipo'})
         };
 
-        const existingCoach = await Team.findOne({coach: coachId})
+        const existingCoach = await Team.findOne({coach: coachId});
 
         if(existingCoach){
             return res.status(403).json({message: 'Este entrenador ya tiene equipo'});
@@ -180,23 +178,7 @@ router.get('/filteringplayer/:player', async(req, res, next) =>{
     };
 });
 
-router.put('/unsubscribe', async(req, res, next) =>{
-    try{
-        const {memberId, teamId} = req.body;
-
-        const updateTeamPlayer = await Team.updateOne({players: memberId}, {$pull: {players: memberId}});
-        const updateTeamCoach = await Team.updateOne({coach: memberId}, {$pull: {coach: memberId}})
-
-        const updatePlayerTeam = await Player.updateOne({team: teamId}, {$pull: {team: teamId}, $set:{salary: 0}});
-        const updateCoachTeam = await Coach.updateOne({team: teamId}, {$pull: {team: teamId}, $set:{salary: 0}});
-
-        return res.status(200).json({message: 'Jugador actualizado'});
-
-    }catch(err){
-        return next(err);
-    };
-});
-
+/* UPDATE BUDGET */
 router.put('/updatebudget', async(req, res, next) =>{
     try{
         const {teamId, newBudget} = req.body;
