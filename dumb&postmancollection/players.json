@@ -1,0 +1,321 @@
+[{
+  "_id": {
+    "$oid": "62e813435eede9aeac8cd924"
+  },
+  "name": "Lionel Messi",
+  "email": "lionel@info.es",
+  "password": "$2b$10$O4VTu8A2sUL5hooS9kJ0LuLHb.HIbkFT8cPvVYIcfTPf08cJyaAEG",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376451011"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376451011"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e8135b5eede9aeac8cd928"
+  },
+  "name": "Karim Benzema",
+  "email": "karim@info.es",
+  "password": "$2b$10$Hwaj7F45CK3EKg6CBlKzjehcE6FJ/sNiWZskX78QczWcwel6xhvVS",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376475051"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376475051"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e813685eede9aeac8cd92c"
+  },
+  "name": "Mo Salah",
+  "email": "salah@info.es",
+  "password": "$2b$10$gNioyVEjWJw2Ac6vOzNhqu5qhe1MwiHvO4i3yKWgdjWa1iUw8kSLm",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376488210"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376488210"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e813755eede9aeac8cd930"
+  },
+  "name": "Kylian Mbappe",
+  "email": "kylian@info.es",
+  "password": "$2b$10$Dby1M8s3S5uonZZXZlvGg.OR85Uhr8D0XJhZTfxedb4k4VB7eCosq",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376501668"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376501668"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e8137f5eede9aeac8cd934"
+  },
+  "name": "Sadio Mané",
+  "email": "sadio@info.es",
+  "password": "$2b$10$CnsTOcXX1ub7UoUyEQNPpu5DAqTgfNRajtBzBMbT2QzKDFYEVW9Ea",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376511953"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376511953"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e8138d5eede9aeac8cd938"
+  },
+  "name": "Bernardo Silva",
+  "email": "bernardo@info.es",
+  "password": "$2b$10$h9d8btYcYbeMKBteSKtbEOW1YGN7W5p3j0MMiic7OH1RqiPlK7nTi",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376526000"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376526000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e8139b5eede9aeac8cd93c"
+  },
+  "name": "Luis Diaz",
+  "email": "luis@info.es",
+  "password": "$2b$10$LHTpsISNlsRfqPEIO8vv4ucXbzFhkFAD3hRonxGs.OvutNPf/Blb2",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376539202"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376539202"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e813af5eede9aeac8cd940"
+  },
+  "name": "Phil Foden",
+  "email": "phil@info.es",
+  "password": "$2b$10$jMjh3LmRWQx..t9JGNg2JOqspwD4veHaulJo960mgQvujVtL9/8wW",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376559461"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376559461"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e813bc5eede9aeac8cd944"
+  },
+  "name": "Fabinho",
+  "email": "fabinho@info.es",
+  "password": "$2b$10$y879zwxSzsaYqKRXirMbPeRGut3/5yY61uI5L//t63EnRptbVfRlK",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376572200"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376572200"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e813cd5eede9aeac8cd948"
+  },
+  "name": "Gavi",
+  "email": "gavi@info.es",
+  "password": "$2b$10$shE/.DgKpIH/c0CRk38ge.VrDEJMWC6Y.Yxk8x16aF/4uMGLs.XmC",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376589488"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376589488"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e813dd5eede9aeac8cd94c"
+  },
+  "name": "Nabil Fekir",
+  "email": "fekir@info.es",
+  "password": "$2b$10$d0FslnnqzonwrkkDo58en.WcLKLipg/Z3N0sQaD3JmxoZ9iKWTnva",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376605035"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376605035"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e813f55eede9aeac8cd950"
+  },
+  "name": "Mason Mount",
+  "email": "mason@info.es",
+  "password": "$2b$10$FIdfbYCGIl7hl9uQVEq9dOlm9dH876x2jMZZqSICdYtKVcELGJiIy",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376629001"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376629001"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e814155eede9aeac8cd954"
+  },
+  "name": "Hakimi",
+  "email": "hakimi@info.es",
+  "password": "$2b$10$jmSCa.2huQ2LFIkf9v76tO.3PSz3gPISIb.zQJSHlSi9bAPTK86mi",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376661764"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376661764"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e814225eede9aeac8cd958"
+  },
+  "name": "Iago Aspas",
+  "email": "aspas@info.es",
+  "password": "$2b$10$MiPg3pkOs02TuIuQNojPGu/5mo/acyFwez34hDXQChPZOnH8opsIy",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376674249"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376674249"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e814335eede9aeac8cd95c"
+  },
+  "name": "Mikel Merino",
+  "email": "mikel@info.es",
+  "password": "$2b$10$G/qfNduDl0.Q0/MsdYPgTeCCEUqfqPZ1u8Libf4D9Dv7Dw0ghbwvW",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376691807"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376691807"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e8143e5eede9aeac8cd960"
+  },
+  "name": "Marco Reus",
+  "email": "marco@info.es",
+  "password": "$2b$10$MCokiAeseu/JXAkjAx8M7eqtO9GaJvKvs/4V4mqaJgPUu31qNxkV.",
+  "salary": 0,
+  "team": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1659376702872"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1659376702872"
+    }
+  },
+  "__v": 0
+}]
