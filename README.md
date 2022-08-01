@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# Gestión de equipos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Stack: MERN
 
-## Available Scripts
+## Instrucciones de instalación
 
-In the project directory, you can run:
+Clona el proyecto y abre dos terminales.
+En una de las terminales harémos CD a la carpeta principal soccer-management y ejecutaremos:
+### `npm install`
 
+En otra terminal harémos CD a la carpeta server y ejecutaremos:
+### `npm install`
+
+
+Una vez se hayan instalado todas las dependencias ejecutaremos en ambas terminales el siguiente comando:
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Una vez se inicie el proyecto debería abrirse una pestaña en tu navegador con el siguiente enlace: [http://localhost:3000](http://localhost:3000).
+También deberías poder ver un aviso en la terminal avisando de que el servidor está arrancado y conectado a la base de datos.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Sobre la aplicación
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Aplicación de gestión de equipos donde un equipo podrá registrarse, iniciar sesión, buscar jugadores o entrenadores, darlos de alta en el equipo, añadir el salario a los mismos sin que este exceda del presupuesto del equipo, podrá modificar el presupuesto (teniendo en cuenta los salarios) y dar de baja a entrenadores y jugadores.
 
-### `npm run build`
+Cada vez que un equipo tramite la alta o la baja a un miembro será notificado por correo electrónico.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Jugadores y entrenadores podrán darse de alta en la aplicación.

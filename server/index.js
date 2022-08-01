@@ -77,5 +77,5 @@ server.use((err, req, res, next) => {
 
 
 server.listen(PORT, () => {
-    console.log(`servidor arrancado en http://localhost:${PORT}`)
-})
+    console.log(`Server running on http://localhost:${PORT}`)
+});
