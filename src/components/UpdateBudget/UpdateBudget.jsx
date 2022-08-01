@@ -6,7 +6,7 @@ import { InputNumber } from 'primereact/inputnumber';
 import { Button } from 'primereact/button';
 import './UpdateBudget.scss';
 
-const UpdateBudget = ({dispatch, team, error}) => {
+const UpdateBudget = ({dispatch, team, error, updatedBudget}) => {
     const [budget, setBudget] = useState(0);
 
     const submitNewBudget = (ev) =>{
@@ -43,6 +43,7 @@ const UpdateBudget = ({dispatch, team, error}) => {
                     {error &&
                         <p className='updatebudget-warning-error'>{error}</p>
                     }
+                    {updatedBudget && <p className='budget-updated'>¡{updatedBudget}!</p>}
                 </div>
         </div>
     );
@@ -50,7 +51,8 @@ const UpdateBudget = ({dispatch, team, error}) => {
 
 const mapStateProps = (state) => ({
     team: state.auth.team,
-    error: state.team.error
+    error: state.team.error,
+    updatedBudget: state.team.updatedBudget
 });
 
 export default connect(mapStateProps)(UpdateBudget);

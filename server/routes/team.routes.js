@@ -62,7 +62,7 @@ router.put('/addplayer', async(req, res, next) =>{
         const existingPlayer = await Team.findOne({players: playerId});
 
         if(existingPlayer){
-            return res.status(403).json({message: 'Ya tienes este jugador en tu plantilla'});
+            return res.status(403).json({message: 'Este jugador ya tiene equipo'});
         }
 
         const updatedPlayer = await Player.findByIdAndUpdate(
@@ -141,7 +141,7 @@ router.put('/addcoach', async(req, res, next) =>{
         const existingCoach = await Team.findOne({coach: coachId})
 
         if(existingCoach){
-            return res.status(403).json({message: 'Ya tienes este entrenador en tu plantilla'});
+            return res.status(403).json({message: 'Este entrenador ya tiene equipo'});
         };
 
         const updatedCoach = await Coach.findByIdAndUpdate(
@@ -184,10 +184,13 @@ router.put('/unsubscribe', async(req, res, next) =>{
     try{
         const {memberId, teamId} = req.body;
 
-        await Team.updateOne({coach: memberId}, {$set: {coach: []}});
-        await Team.updateOne({players: memberId}, {$set: {players: []}});
-        await Player.updateOne({team: teamId}, {$set: {team: [], salary: 0}});
-        await Coach.updateOne({team: teamId}, {$set: {team: [], salary: 0}});
+        const updateTeamPlayer = await Team.updateOne({players: memberId}, {$pull: {players: memberId}});
+        const updateTeamCoach = await Team.updateOne({coach: memberId}, {$pull: {coach: memberId}})
+
+        const updatePlayerTeam = await Player.updateOne({team: teamId}, {$pull: {team: teamId}, $set:{salary: 0}});
+        const updateCoachTeam = await Coach.updateOne({team: teamId}, {$pull: {team: teamId}, $set:{salary: 0}});
+
+        return res.status(200).json({message: 'Jugador actualizado'});
 
     }catch(err){
         return next(err);
@@ -208,11 +211,12 @@ router.put('/updatebudget', async(req, res, next) =>{
         };
 
         await Team.findByIdAndUpdate(teamId, {$set: {budget: newBudget}});
+        return res.status(200).json({message: 'Presupuesto actualizado'})
 
     }catch(err){
         return next(err);
     };
-})
+});
 
 
 module.exports = router;

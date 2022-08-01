@@ -118,7 +118,7 @@ export const addCoach = (formInfo) =>{
         const result = await addCoachRequest.json();
 
         if(addCoachRequest.ok){
-            dispatch({type: ACTION_COACH_ADD, payload: result})
+            dispatch({type: ACTION_COACH_ADD_OK, payload: result})
         }else{
             dispatch({type: ACTION_COACH_ADD_ERROR, payload: result.message})
         };
@@ -217,7 +217,7 @@ export const updateBudget = (teamId, newBudget) =>{
         const result = await updateBudgetRequest.json();
 
         if(updateBudgetRequest.ok){
-            dispatch({type: ACTION_UPDATEBUDGET_OK, payload: result})
+            dispatch({type: ACTION_UPDATEBUDGET_OK, payload: result.message})
         }else{
             dispatch({type: ACTION_UPDATEBUDGET_ERROR, payload: result.message})
         }
