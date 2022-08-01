@@ -6,11 +6,10 @@ import { addCoach, findAllCoachs } from '../../redux/actions/team.actions';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
 import { Modal, Input, Row, Text } from "@nextui-org/react";
 import './CoachList.scss';
 
-const CoachList = ({dispatch, coachList, team, error}) => {
+const CoachList = ({dispatch, coachList, team, updatedCoachs, error}) => {
     const [updatedCoach, setUpdatedCoach] = useState({coachId: '', teamId: '', coachSalary: 0});
     const [visible, setVisible] = useState(false);
 
@@ -21,7 +20,7 @@ const CoachList = ({dispatch, coachList, team, error}) => {
 
     const refreshPostError = () =>{
         setTimeout(() =>{
-            dispatch(findAllCoachs())
+            dispatch(findAllCoachs());
         }, 3000)
     };
 
@@ -83,6 +82,12 @@ const CoachList = ({dispatch, coachList, team, error}) => {
                     {refreshPostError()};
                 </div>
             }
+            {updatedCoachs &&
+                <div>
+                    <p className='member-updated'>¡Entrenador añadido!</p>
+                    {refreshPostError()}
+                </div>
+            }
             {coachList &&
                 <DataTable value={coachList} header={header} responsiveLayout="scroll">
                     <Column field="name" header="Nombre" body={coachList.name}></Column>
@@ -142,6 +147,7 @@ const CoachList = ({dispatch, coachList, team, error}) => {
 const mapStateProps = (state) =>({
     team: state.auth.team,
     coachList: state.team.coachList,
+    updatedCoachs: state.team.updatedCoachs,
     error: state.team.error
 })
 

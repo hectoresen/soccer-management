@@ -9,13 +9,21 @@ import { Button } from 'primereact/button';
 import CoachList from '../CoachList/CoachList';
 import './TeamTemplate.scss';
 
-const TeamTemplate = ({dispatch, team, teamTemplate}) => {
+const TeamTemplate = ({dispatch, team, teamTemplate, unsubscribed}) => {
     const {players, coachs} = teamTemplate;
     const [needCoach, setNeedCoach] = useState(false);
 
     useEffect(() =>{
         dispatch(getTemplate(team._id))
     },[])
+
+    const refreshPostError = () =>{
+        setTimeout(() =>{
+            dispatch(getTemplate(team._id))
+        }, 3000)
+    };
+
+
 
     const playersHeader = (
         <div className='teamtemplate__header'>
@@ -50,6 +58,12 @@ const TeamTemplate = ({dispatch, team, teamTemplate}) => {
 
     return (
         <div className='teamtemplate'>
+            {unsubscribed &&
+            <div>
+                <p className='unsubscribed-member'>Has dado de baja al jugador y ha sido notificado por correo electrónico</p>
+                {refreshPostError()}
+            </div>
+            }
             {players &&
             <div className='teamtemplate__list'>
                 <div className='teamtemplate__list-players'>
@@ -88,7 +102,8 @@ const TeamTemplate = ({dispatch, team, teamTemplate}) => {
 
 const mapStateProps = (state) =>({
     team: state.auth.team,
-    teamTemplate: state.team.teamTemplate
+    teamTemplate: state.team.teamTemplate,
+    unsubscribed: state.team.unsubscribed
 });
 
 export default connect(mapStateProps)(TeamTemplate);

@@ -10,7 +10,7 @@ import { InputText } from 'primereact/inputtext';
 import { Modal, Input, Row, Text } from "@nextui-org/react";
 import './PlayersList.scss';
 
-const PlayersList = ({ dispatch, playersList, filteredPlayers, team, error }) => {
+const PlayersList = ({ dispatch, playersList, filteredPlayers, team, updatedPlayers, error }) => {
     const [activePage, setActivePage] = useState(1);
     const [enableNextPage, setEnableNextPage] = useState(false);
     const [enablePreviousPage, setEnablePreviousPage] = useState(false);
@@ -112,6 +112,12 @@ const PlayersList = ({ dispatch, playersList, filteredPlayers, team, error }) =>
                     {refreshPostError()}
                 </div>
                 }
+                {updatedPlayers &&
+                <div>
+                    <p className='member-updated'>Jugador añadido a tu plantilla</p>
+                    {refreshPostError()}
+                </div>
+                }
                 {filteredPlayers &&
                     <DataTable value={filteredPlayers} header={filteredPlayersHeader} responsiveLayout="scroll">
                         <Column field="name" header="Nombre" body={players.name}></Column>
@@ -197,6 +203,7 @@ const mapStateProps = (state) => ({
     team: state.auth.team,
     playersList: state.team.playersList,
     filteredPlayers: state.team.filteredPlayers,
+    updatedPlayers: state.team.updatedPlayers,
     error: state.team.error
 });
 
